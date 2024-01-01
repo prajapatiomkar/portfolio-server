@@ -2,6 +2,7 @@ import { configDotenv } from "dotenv";
 configDotenv();
 import express from "express";
 import cors from "cors";
+import userRouters from "./routes/userRoutes.js";
 const app = express();
 
 const corsOptions = {
@@ -15,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/api", (req, res) => {
   res.send("hello from server!");
 });
+
+app.use("/api", userRouters);
 
 // Global error handler - route handlers/middlewares which throw end up here
 app.use((err, req, res, next) => {

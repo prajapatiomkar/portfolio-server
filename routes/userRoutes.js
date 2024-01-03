@@ -1,5 +1,7 @@
 import express from "express";
 
+import passport from "passport";
+
 import {
   registerController,
   loginController,
@@ -10,6 +12,6 @@ const router = express.Router();
 
 router.post("/register", registerController);
 router.post("/login", loginController);
-router.get("/protected", protectedController);
+router.get("/protected", passport.authenticate("jwt"), protectedController);
 
 export default router;

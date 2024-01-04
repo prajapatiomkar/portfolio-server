@@ -12,7 +12,7 @@ const registerController = async (req, res) => {
       user.save();
       res.send(user);
     } catch (error) {
-      res.send(error);
+      res.status(409).json(error);
     }
   }
   res.send(error);
